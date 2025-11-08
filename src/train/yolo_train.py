@@ -1,5 +1,9 @@
 import os
 import subprocess
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+os.environ["OMP_NUM_THREADS"] = "1"
+
 
 DATASET_DIR = "datasets"
 yaml_path = os.path.join(DATASET_DIR, "data.yaml")
@@ -16,7 +20,9 @@ cmd = [
     "plots=True",
     "project=runs/detect",
     "name=bbox3_nocopy",
-    "verbose=True"
+    "verbose=True",
+    "workers=0"
+
 ]
 
 subprocess.run(cmd)
