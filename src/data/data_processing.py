@@ -22,13 +22,20 @@ print(f"[INFO] 전체 {len(json_files)}개 중 Train={len(train_files)}, Val={le
 
 # category_id → BoundingBox mapping 
 CATEGORY_MAP = {
-    3: "car-b",                   # Car
-    2: "Two-wheel Vehicle-b",     # Two-wheel Vehicle
-    97: "Pedestrian-b",           # Kid student
-    98: "Pedestrian-b"            # Adult
+    3: "Car",
+    2: "Two-wheel Vehicle",
+    99: "Personal Mobility",
+    8: "TruckBus",
+    97: "Kid student",
+    98: "Adult",
+    12: "Traffic Sign",
+    10: "Traffic Light",
+    52: "Speed bump",
+    51: "Parking space",
+    100: "Crosswalk"
 }
 
-TARGET_CATEGORIES = ["car-b", "Two-wheel Vehicle-b", "Pedestrian-b"]
+TARGET_CATEGORIES = list(CATEGORY_MAP.values())
 category_map = {name: i for i, name in enumerate(TARGET_CATEGORIES)}
 
 def convert_bbox(img_w, img_h, bbox):
@@ -51,25 +58,20 @@ def convert_json_to_yolo(json_path, list_file):
     label_name = os.path.splitext(img_name)[0] + ".txt"
     label_path = os.path.join(YOLO_LABEL_DIR, label_name)
 
-    if os.path.exists(label_path):
-        return
-
     wrote_any = False
-    with open(label_path, "w") as out_f:
+    with open(label_path, "w", encoding="utf-8") as out_f:
         for ann in data.get("annotations", []):
             cid = ann["category_id"]
             if cid not in CATEGORY_MAP:
                 continue
-
-            cat_name = CATEGORY_MAP[cid]
-            cat_id = category_map[cat_name]
-
             x_c, y_c, w, h = convert_bbox(img_w, img_h, ann["bbox"])
+            cat_id = category_map[CATEGORY_MAP[cid]]
             out_f.write(f"{cat_id} {x_c:.6f} {y_c:.6f} {w:.6f} {h:.6f}\n")
             wrote_any = True
 
     if os.path.exists(img_path) and wrote_any:
-        list_file.write(f"{img_path}\n")
+        list_file.write(os.path.abspath(img_path) + "\n")
+
 
 train_list = open(os.path.join(DATASET_DIR, "train.txt"), "w", encoding="utf-8")
 val_list = open(os.path.join(DATASET_DIR, "val.txt"), "w", encoding="utf-8")
@@ -88,11 +90,20 @@ with open(yaml_path, "w", encoding="utf-8") as f:
     f.write(f"""train: {abs_dir}/train.txt
 val: {abs_dir}/val.txt
 
-nc: 3
+nc: 11
 names:
-  - car-b
-  - Two-wheel Vehicle-b
-  - Pedestrian-b
+  - Car
+  - Two-wheel Vehicle
+  - Personal Mobility
+  - TruckBus
+  - Kid student
+  - Adult
+  - Traffic Sign
+  - Traffic Light
+  - Speed bump
+  - Parking space
+  - Crosswalk
 """)
+
 
 print("[INFO] 라벨 변환 완료 및 data.yaml 생성")
