@@ -106,4 +106,3 @@ names:
 """)
 
 
-print("[INFO] 라벨 변환 완료 및 data.yaml 생성")
