@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoModelForVision2Seq, AutoProcessor, BitsAndBytesConfig
+from transformers import Qwen2VLForConditionalGeneration, AutoProcessor, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
 def load_model_and_processor(base_model: str, use_4bit=True):
@@ -12,13 +12,14 @@ def load_model_and_processor(base_model: str, use_4bit=True):
             bnb_4bit_quant_type="nf4",
         )
 
-    model = AutoModelForVision2Seq.from_pretrained(
-        base_model,
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-        quantization_config=quant_cfg,
-        device_map="auto",
+    model = Qwen2VLForConditionalGeneration.from_pretrained(
+    base_model,
+    torch_dtype=torch.bfloat16,
+    trust_remote_code=True,
+    quantization_config=quant_cfg,
+    device_map="auto",
     )
+
     processor = AutoProcessor.from_pretrained(base_model, trust_remote_code=True)
 
     for n, p in model.named_parameters():
@@ -30,10 +31,10 @@ def load_model_and_processor(base_model: str, use_4bit=True):
         model = prepare_model_for_kbit_training(model)
 
     lora_cfg = LoraConfig(
-        r=16,
-        lora_alpha=32,
+        r=8,
+        lora_alpha=16,
         lora_dropout=0.05,
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "up_proj", "down_proj", "gate_proj"],
+        target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
         bias="none",
         task_type="CAUSAL_LM",
     )
