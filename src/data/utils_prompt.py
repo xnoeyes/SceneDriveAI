@@ -16,7 +16,7 @@ def format_objects_text(objects: List[Dict[str, Any]], topk: int = 3) -> str:
 
 def build_prompt(objects_text: str, caption: Optional[str], question: str) -> str:
     sys = (
-    "You are an assistant that answers questions about road-driving scenes. " 
+    "You are an assistant that answers questions about road-driving scenes. "
     "Rely only on the provided object annotations and, if available, the caption. "
     "Do not imagine or infer anything that is not visible in the current scene; "
     "describe only what can be observed."   
