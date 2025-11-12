@@ -1,6 +1,7 @@
+from PIL import Image
+import torch
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
-import torch
 
 @dataclass
 class VLMCollator:
@@ -8,15 +9,19 @@ class VLMCollator:
     pad_to_multiple_of: Optional[int] = 8
 
     def __call__(self, batch: List[Dict[str, Any]]) -> Dict[str, torch.Tensor]:
-        images = [b["image"] for b in batch]
+        images = []
+        for b in batch:
+            img = b["image"]
+            if isinstance(img, Image.Image):
+                img = img.resize((448, 448), Image.BICUBIC)  # ✅ 해상도 축소
+            images.append(img)
+
         prompts = [b["prompt"] for b in batch]
         targets = [b["target"] for b in batch]
         texts = [p + t for p, t in zip(prompts, targets)]
 
         enc = self.processor(images=images, text=texts, return_tensors="pt", padding=True)
-        with self.processor.as_target_tokenizer():
-            tgt = self.processor(text=targets, return_tensors="pt", padding=True)
-
+        tgt = self.processor(text=targets, return_tensors="pt", padding=True)
         labels = enc["input_ids"].clone()
         labels[:] = -100
         for i in range(labels.size(0)):
@@ -28,5 +33,6 @@ class VLMCollator:
             "input_ids": enc["input_ids"],
             "attention_mask": enc["attention_mask"],
             "pixel_values": enc["pixel_values"],
+            "image_grid_thw": enc.get("image_grid_thw"),  # Qwen2-VL 전용
             "labels": labels,
         }
