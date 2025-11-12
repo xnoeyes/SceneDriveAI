@@ -1,26 +1,32 @@
-from config.config import PathConfig
+from config.train_config import PathConfig
 from model.model_utils import load_model_and_processor
 from model.collator import VLMCollator
 from data.vlm_data import VLMJsonlDataset
 from transformers import Trainer, TrainingArguments
 import os
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True,max_split_size_mb:128"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def main():
     cfg = PathConfig()
 
-    model, processor = load_model_and_processor("Qwen/Qwen2-VL-7B-Instruct", use_4bit=True)
+    model, processor = load_model_and_processor(
+        "Qwen/Qwen2-VL-7B-Instruct",
+        use_4bit=True,
+    )
     train_ds = VLMJsonlDataset(cfg.train_json, cfg)
     val_ds   = VLMJsonlDataset(cfg.val_json, cfg)
     collator = VLMCollator(processor=processor)
-
     os.makedirs(cfg.output_dir, exist_ok=True)
 
     args = TrainingArguments(
+        remove_unused_columns=False,  # ✅ 반드시 유지
+        dataloader_num_workers=0,     # ✅ 추가
         output_dir=cfg.output_dir,
         num_train_epochs=3,
         per_device_train_batch_size=2,
         per_device_eval_batch_size=2,
-        gradient_accumulation_steps=8,
+        gradient_accumulation_steps=16,
         learning_rate=2e-4,
         lr_scheduler_type="cosine",
         warmup_ratio=0.03,
