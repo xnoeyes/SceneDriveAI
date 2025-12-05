@@ -1,0 +1,480 @@
+@import url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'SUIT', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+}
+.font-pretendard {
+  font-family: "Pretendard", sans-serif !important;
+}
+
+.futuristic-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Stronger City Buildings */
+
+.city-building {
+  position: relative;
+  border-radius: 12px;
+
+  /* 더 진하게 (기존보다 30% 진함) */
+  background: linear-gradient(
+    180deg,
+    rgba(220, 230, 245, 0.9) 0%,     /* 위 */
+    rgba(180, 195, 220, 0.95) 100%   /* 아래 */
+  );
+
+  opacity: 0.8;  /* 기존 0.7~0.8 느낌 → 더 선명하게 */
+}
+
+@keyframes buildingPulse {
+  0% {
+    opacity: 0.95;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1.03);
+  }
+}
+
+
+@keyframes buildingPulse {
+  0% {
+    opacity: 0.82;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0.96;
+    transform: scaleY(1.03);
+  }
+}
+
+.road-lane {
+  background: linear-gradient(90deg, #64748b 0%, #94a3b8 50%, #64748b 100%);
+}
+
+.ai-pulse {
+  animation: aiPulse 2s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.drone {
+  position: absolute;
+  top: 80px;                 /* 드론 높이 */
+  right: -140px;             /* 화면 오른쪽 밖에서 출발 */
+  width: 90px;
+  height: 45px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px;
+  z-index: 30;
+  animation: drone-fly 7s linear infinite;
+}
+
+.drone-body-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #22c55e;       /* 초록 센서 불빛 느낌 */
+}
+
+.drone-arm {
+  width: 18px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #0f172a;
+  position: relative;
+}
+
+/* 프로펠러 링 */
+.drone-arm::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 2px solid #0f172a;
+  transform: translate(-50%, -50%);
+}
+
+/* 회전하는 프로펠러 블레이드 */
+.drone-arm::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 9999px;
+  background: #0f172a;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  animation: prop-spin 0.35s linear infinite;
+}
+
+/* 드론 이동 경로 */
+@keyframes drone-fly {
+  0% {
+    transform: translateX(0) translateY(30px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    /* 조금 올라감 */
+    transform: translateX(-25vw) translateY(-25px);
+  }
+  50% {
+    /* 가장 높은 지점 (많이 위로!) */
+    transform: translateX(-50vw) translateY(-60px);
+  }
+  75% {
+    /* 다시 내려오면서 약간 흔들림 */
+    transform: translateX(-80vw) translateY(20px);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    /* 화면 밖으로 나가면서 조금 내려감 */
+    transform: translateX(-115vw) translateY(5px);
+    opacity: 0;
+  }
+}
+
+/* 프로펠러 회전 */
+@keyframes prop-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes floatTitle {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-float {
+  animation: floatTitle 4s ease-in-out infinite;
+}
+
+/* =========================
+        analysispage 
+   ========================= */
+
+/* index.css에 추가 */
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.bounding-box {
+  position: absolute;
+  border: 2px solid;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.box-label {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.upload-area {
+  border: 2px dashed #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.upload-area.dragover {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.detection-row:hover {
+  background-color: #f3f4f6;
+}
+
+/* 스크롤 페이드 인 공통 스타일 */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 부드럽게 둥둥 떠다니는 효과 */
+@keyframes float-soft {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* 카드 주변이 은은하게 빛나는 효과 */
+@keyframes glow-soft {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(56, 189, 248, 0.45);
+  }
+}
+
+/* 그라디언트가 좌→우로 천천히 움직이는 효과 */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 편하게 쓰려고 클래스 이름으로 래핑 */
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.animate-glow-soft {
+  animation: glow-soft 4s ease-in-out infinite;
+}
+
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradient-move 14s ease-in-out infinite;
+}
+
+/* 라이다 / 레이더 파동 */
+@keyframes radar-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+
+.radar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: radar-pulse 2.4s ease-out infinite;
+}
+
+
+/* === Road navigation demo animation === */
+
+.road-scene .obj-ego {
+  animation: egoBounce 2.6s ease-in-out infinite alternate;
+}
+
+.road-scene .obj-front {
+  animation: frontMove 4.2s linear infinite;
+}
+
+.road-scene .obj-bike {
+  animation: bikeMove 3.5s linear infinite alternate;
+}
+
+.road-scene .obj-ped {
+  animation: pedMove 3s ease-in-out infinite alternate;
+}
+
+@keyframes egoBounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes frontMove {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(40px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes bikeMove {
+  0% {
+    transform: translateY(20px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-16px);
+    opacity: 1;
+  }
+}
+
+@keyframes pedMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* bounding box pulse 효과 */
+.bbox-pulse {
+  border-radius: 0.75rem;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.8);
+  animation: bboxPulse 1.6s ease-out infinite;
+}
+
+@keyframes bboxPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(52, 211, 153, 0);
+  }
+}
+
+.bbox-warning {
+  border-radius: 0.75rem;
+  box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.9);
+  animation: bboxWarning 1.6s ease-out infinite;
+}
+
+@keyframes bboxWarning {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(251, 191, 36, 0);
+  }
+}
+/* ==== Object-Aware 파이프라인용 커스텀 애니메이션 ==== */
+
+@keyframes pipeline-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-pipeline-flow {
+  background-size: 200% 200%;
+  animation: pipeline-flow 4s linear infinite;
+}
+
+@keyframes arrow-move {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+}
+
+.animate-arrow-move {
+  animation: arrow-move 1.8s infinite;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 3s ease-in-out infinite;
+}
+
+@keyframes step-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-step-fade {
+  animation: step-fade 0.8s ease-out forwards;
+}
+
+@keyframes soft-pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-soft-pop {
+  animation: soft-pop 0.4s ease-out forwards;
+}
