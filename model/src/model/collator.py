@@ -13,7 +13,7 @@ class VLMCollator:
         for b in batch:
             img = b["image"]
             if isinstance(img, Image.Image):
-                img = img.resize((448, 448), Image.BICUBIC)  # ✅ 해상도 축소
+                img = img.resize((448, 448), Image.BICUBIC)
             images.append(img)
 
         prompts = [b["prompt"] for b in batch]
@@ -33,6 +33,6 @@ class VLMCollator:
             "input_ids": enc["input_ids"],
             "attention_mask": enc["attention_mask"],
             "pixel_values": enc["pixel_values"],
-            "image_grid_thw": enc.get("image_grid_thw"),  # Qwen2-VL 전용
+            "image_grid_thw": enc.get("image_grid_thw"), 
             "labels": labels,
         }
