@@ -39,7 +39,7 @@ app.add_middleware(
 MODEL_PATH = "models/best.pt"  
 print(f"[YOLO] Loading model from {MODEL_PATH} (CPU)...")
 model = YOLO(MODEL_PATH)
-model.to("cpu")  # YOLO는 CPU 전용
+model.to("cpu")  
 
 class Box(BaseModel):
     class_: str
