@@ -26,14 +26,13 @@ body {
   position: relative;
   border-radius: 12px;
 
-  /* 더 진하게 (기존보다 30% 진함) */
   background: linear-gradient(
     180deg,
     rgba(220, 230, 245, 0.9) 0%,     /* 위 */
     rgba(180, 195, 220, 0.95) 100%   /* 아래 */
   );
 
-  opacity: 0.8;  /* 기존 0.7~0.8 느낌 → 더 선명하게 */
+  opacity: 0.8;  
 }
 
 @keyframes buildingPulse {
@@ -46,7 +45,6 @@ body {
     transform: scaleY(1.03);
   }
 }
-
 
 @keyframes buildingPulse {
   0% {
@@ -81,7 +79,7 @@ body {
 .drone {
   position: absolute;
   top: 80px;                 /* 드론 높이 */
-  right: -140px;             /* 화면 오른쪽 밖에서 출발 */
+  right: -140px;            
   width: 90px;
   height: 45px;
   border-radius: 9999px;
@@ -100,7 +98,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 9999px;
-  background: #22c55e;       /* 초록 센서 불빛 느낌 */
+  background: #22c55e;      
 }
 
 .drone-arm {
@@ -149,22 +147,18 @@ body {
     opacity: 1;
   }
   25% {
-    /* 조금 올라감 */
     transform: translateX(-25vw) translateY(-25px);
   }
   50% {
-    /* 가장 높은 지점 (많이 위로!) */
     transform: translateX(-50vw) translateY(-60px);
   }
   75% {
-    /* 다시 내려오면서 약간 흔들림 */
     transform: translateX(-80vw) translateY(20px);
   }
   90% {
     opacity: 1;
   }
   100% {
-    /* 화면 밖으로 나가면서 조금 내려감 */
     transform: translateX(-115vw) translateY(5px);
     opacity: 0;
   }
@@ -190,11 +184,7 @@ body {
   animation: floatTitle 4s ease-in-out infinite;
 }
 
-/* =========================
-        analysispage 
-   ========================= */
-
-/* index.css에 추가 */
+/* analysispage */
 
 .image-container {
   position: relative;
@@ -236,7 +226,7 @@ body {
   background-color: #f3f4f6;
 }
 
-/* 스크롤 페이드 인 공통 스타일 */
+/* 스크롤 페이드 인  */
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
@@ -248,7 +238,8 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-/* 부드럽게 둥둥 떠다니는 효과 */
+
+
 @keyframes float-soft {
   0%, 100% {
     transform: translateY(0px);
@@ -258,7 +249,6 @@ body {
   }
 }
 
-/* 카드 주변이 은은하게 빛나는 효과 */
 @keyframes glow-soft {
   0%, 100% {
     box-shadow: 0 0 0 rgba(56, 189, 248, 0);
@@ -268,7 +258,6 @@ body {
   }
 }
 
-/* 그라디언트가 좌→우로 천천히 움직이는 효과 */
 @keyframes gradient-move {
   0% {
     background-position: 0% 50%;
@@ -281,7 +270,6 @@ body {
   }
 }
 
-/* 편하게 쓰려고 클래스 이름으로 래핑 */
 .animate-float-soft {
   animation: float-soft 6s ease-in-out infinite;
 }
@@ -295,7 +283,6 @@ body {
   animation: gradient-move 14s ease-in-out infinite;
 }
 
-/* 라이다 / 레이더 파동 */
 @keyframes radar-pulse {
   0% {
     transform: translate(-50%, -50%) scale(0.6);
@@ -403,7 +390,7 @@ body {
     box-shadow: 0 0 0 12px rgba(251, 191, 36, 0);
   }
 }
-/* ==== Object-Aware 파이프라인용 커스텀 애니메이션 ==== */
+/* Object-Aware 파이프라인용 커스텀 애니메이션 */
 
 @keyframes pipeline-flow {
   0% {
