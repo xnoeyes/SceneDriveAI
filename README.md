@@ -131,8 +131,6 @@ datasets/
   <img src="images/006.png" width="32%" />
 </p>
 
-## Demo Video
-
 [▶ Watch the demo video](https://github.com/xnoeyes/2025_PBL_SceneDrive/releases/download/v1.0.0/demo.mp4)
 
 
