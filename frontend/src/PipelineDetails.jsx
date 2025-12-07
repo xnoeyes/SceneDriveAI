@@ -67,11 +67,8 @@ function ObjectAwareDetails() {
             ← Back to Home
           </Link>
         </div>
-
-        {/* 1. 전체 파이프라인 다이어그램 */}
         <FadeInSection>
           <section className="mb-16 relative">
-            {/* 바깥 글로우 프레임 */}
             <div className="pointer-events-none absolute -inset-3 rounded-3xl border border-primary/20 opacity-30 blur-lg" />
 
             <div className="relative z-10">
@@ -86,7 +83,6 @@ function ObjectAwareDetails() {
               </p>
 
               <div className="relative mt-10">
-                {/* 중앙 흐르는 라인 (PC에서만) */}
                 <div
                   className="
                     hidden md:block absolute left-10 right-10 top-24 h-[4px]
@@ -94,8 +90,7 @@ function ObjectAwareDetails() {
                     rounded-full opacity-90 animate-pipeline-flow
                   "
                 />
-
-                {/* 데스크탑: 가로 + 화살표 */}
+                
                 <div className="hidden md:flex items-stretch justify-between gap-4 relative">
                   {PIPELINE_STEPS.map((step, idx) => (
                     <React.Fragment key={step.id}>
@@ -145,8 +140,6 @@ function ObjectAwareDetails() {
                           {step.desc}
                         </p>
                       </div>
-
-                      {/* STEP 사이 화살표 (마지막 전까지만) */}
                       {idx < PIPELINE_STEPS.length - 1 && (
                         <div className="flex items-center justify-center">
                           <div className="text-primary/60 text-4xl font-light animate-arrow-move">
@@ -157,8 +150,6 @@ function ObjectAwareDetails() {
                     </React.Fragment>
                   ))}
                 </div>
-
-                {/* 모바일: 세로 스택 */}
                 <div className="grid md:hidden grid-cols-1 gap-4 relative">
                   {PIPELINE_STEPS.map((step, idx) => (
                     <div
@@ -200,10 +191,6 @@ function ObjectAwareDetails() {
             </div>
           </section>
         </FadeInSection>
-
-        {/* =============================== */}
-        {/* 2. VLA로 확장되는 미래 방향 (밝은 카드 버전) */}
-        {/* =============================== */}
         <FadeInSection>
           <section className="mb-14">
             <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-4">
@@ -211,12 +198,10 @@ function ObjectAwareDetails() {
             </h3>
 
             <div className="relative rounded-3xl bg-white/90 backdrop-blur-xl border border-gray-200 shadow-md md:shadow-lg p-6 md:p-8 overflow-hidden">
-              {/* 은은한 그라디언트 포인트 */}
               <div className="pointer-events-none absolute -right-20 -top-10 w-56 h-56 rounded-full bg-gradient-to-l from-primary/15 via-cyan-200/20 to-transparent blur-3xl" />
               <div className="pointer-events-none absolute -left-20 bottom-0 w-64 h-64 rounded-full bg-gradient-to-r from-cyan-100/40 via-blue-100/30 to-transparent blur-3xl" />
 
               <div className="relative grid md:grid-cols-[1.4fr,1fr] gap-8 items-center">
-                {/* 왼쪽 텍스트 영역 */}
                 <div>
                   <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
                     현재 단계의 모델은 도로 위 객체들을 인식하고, 장면을
@@ -254,8 +239,6 @@ function ObjectAwareDetails() {
                     </li>
                   </ul>
                 </div>
-
-                {/* 오른쪽 작은 다이어그램 카드 */}
                 <div className="relative">
                   <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-cyan-50 p-4 md:p-5 shadow-sm">
                     <p className="text-[11px] uppercase tracking-[0.18em] text-blue-500 mb-3">
@@ -314,18 +297,12 @@ function ObjectAwareDetails() {
                       </div>
                     </div>
                   </div>
-
-                  {/* 은은한 아웃라인 글로우 */}
                   <div className="pointer-events-none absolute -inset-1 rounded-3xl border border-primary/20 opacity-60 blur-md" />
                 </div>
               </div>
             </div>
           </section>
         </FadeInSection>
-
-        {/* =============================== */}
-        {/* 3. Object-aware Navigation Preview */}
-        {/* =============================== */}
         <FadeInSection>
           <section className="mb-4 md:mb-6">
             <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-3">
@@ -335,20 +312,13 @@ function ObjectAwareDetails() {
             {/* 네비게이션 디스플레이 프레임 */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-xl rounded-[32px] bg-gray-100 border border-gray-300 overflow-hidden shadow-md">
-                {/* 도로 화면이 프레임 안을 꽉 채움 */}
                 <div className="road-scene relative w-full h-52 md:h-64 bg-gray-200">
-                  {/* 상단 정보 오버레이 (시간/거리 등) */}
                   <div className="absolute top-2 left-3 flex items-center gap-1.5 text-[10px] md:text-xs text-gray-700">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     <span>SceneDrive · NAV</span>
                   </div>
-
-                  {/* 세로 도로 */}
                   <div className="absolute inset-y-3 left-1/2 -translate-x-1/2 w-36 md:w-44 bg-white rounded-[32px] border border-gray-400 shadow-inner overflow-hidden">
-                    {/* 중앙 차선 점선 */}
                     <div className="absolute inset-y-3 left-1/2 -translate-x-1/2 w-1 bg-[repeating-linear-gradient(to_bottom,rgba(148,163,184,0.9)_0,rgba(148,163,184,0.9)_8px,transparent_8px,transparent_18px)] opacity-90" />
-
-                    {/* Ego 차량 + 초록 bbox */}
                     <div className="absolute bottom-3 left-1/2 obj-ego">
                       <div className="-translate-x-1/2 transform relative">
                         <div className="w-9 h-12 md:w-10 md:h-14 bg-primary/80 rounded-xl flex items-center justify-center text-lg">
@@ -357,8 +327,6 @@ function ObjectAwareDetails() {
                         <div className="bbox-pulse absolute -1 -1 right-1 bottom-1 border-2 border-emerald-400/90" />
                       </div>
                     </div>
-
-                    {/* 앞차 */}
                     <div className="absolute top-6 left-1/2 obj-front">
                       <div className="-translate-x-1/2 transform relative">
                         <div className="w-8 h-11 bg-blue-400 rounded-xl flex items-center justify-center text-base">
@@ -367,8 +335,6 @@ function ObjectAwareDetails() {
                         <div className="bbox-pulse absolute -1 -1 right-1 bottom-1 border-2 border-emerald-400/80" />
                       </div>
                     </div>
-
-                    {/* 왼쪽 차선 오토바이 */}
                     <div className="absolute bottom-6 left-4 obj-bike">
                       <div className="relative">
                         <div className="w-7 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-base">
@@ -377,8 +343,6 @@ function ObjectAwareDetails() {
                         <div className="bbox-pulse absolute -1 -1 right-1 bottom-1 border-2 border-emerald-400/70" />
                       </div>
                     </div>
-
-                    {/* 우측 보행자 + 노란 경고 bbox */}
                     <div className="absolute top-10 right-4 obj-ped">
                       <div className="relative">
                         <div className="w-6 h-9 bg-amber-300 rounded-xl flex items-center justify-center text-base">
