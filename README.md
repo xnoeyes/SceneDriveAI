@@ -133,10 +133,5 @@ datasets/
 
 ## Demo Video
 
-## Demo Video
-
-<video width="750" controls>
-  <source src="https://github.com/xnoeyes/2025_PBL_SceneDrive/releases/download/v1.0.0/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<video src="https://github.com/xnoeyes/2025_PBL_SceneDrive/releases/download/v1.0.0/demo.mp4" width="750" controls></video>
 
