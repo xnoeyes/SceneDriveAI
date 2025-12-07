@@ -43,20 +43,20 @@ datasets/
 - Vision-Language: **Qwen2-VL-7B-Instruct** (4-bit quantization)
 
 ## Key Features
-#### 1. Object Detection
+### Object Detection
    - YOLO 기반으로 차량, 보행자, 표지판 등 도로 위 주요 객체 탐지
    - 업로드된 이미지에 대해 bounding box 및 클래스 표시
 
-#### 2. Object-aware 입력 포맷팅
+### Object-aware 입력 포맷팅
    - 탐지된 객체 정보를 정리하여  
      - 객체 종류, 위치, 크기  
      - 객체 간 관계를 포함한 구조화된 텍스트로 변환
 
-#### 3. Vision-Language 기반 도로 상황 설명
+### Vision-Language 기반 도로 상황 설명
    - Qwen2-VL에 원본 이미지와 객체 정보를 함께 입력
    - 도로 상황 요약, 위험 요소, 주의사항 등을 자연어로 생성
 
-#### 4. 웹 기반 데모 인터페이스
+### 웹 기반 데모 인터페이스
    - 이미지 업로드 후 도로 위 객체 탐지와 도로 장면 설명 결과 확인
 
 ## Architecture
@@ -98,6 +98,11 @@ datasets/
 | Total training time | 10,565s ≈ **2h 56m** |
 | Total steps             | 519 steps                     |
 | Avg. time per step      | **≈ 20.4s/step**              |
+
+<p align="center">
+  <img src="images/precision_recall.png" width="32%" />
+  <img src="images/002.train_val_loss_combined.png" width="32%" />
+</p>
 
 #### 2-2. VLM Performance
 
