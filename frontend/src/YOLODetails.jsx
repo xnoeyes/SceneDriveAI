@@ -120,8 +120,6 @@ function YOLODetails() {
                 </a>
               </div>
             </div>
-
-            {/* 소분류 11개 클래스 바 차트 */}
             <div className="mt-4">
               <p className="text-sm font-medium text-gray-700 mb-1">
                 Class Distribution
@@ -164,7 +162,6 @@ function YOLODetails() {
           </div>
         </FadeInSection>
       </section>
-
 
         {/* Model Performance */}
         <section className="mb-12">
