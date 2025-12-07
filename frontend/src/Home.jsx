@@ -1,4 +1,4 @@
-// src/Home.jsx (또는 App.jsx)
+// src/Home.jsx 
 import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
@@ -160,7 +160,7 @@ function App() {
                 </div>
               </div>
 
-              {/* Vehicle 4 : Truck */}
+              {/* Vehicle 4 */}
               <div
                 className="absolute animate-car-move"
                 style={{
@@ -234,8 +234,6 @@ function App() {
               className="w-40 h-40 object-contain animate-float"
             />
           </div>
-
-          {/* 제목 + 서브 텍스트 */}
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-6xl mx-auto">
               <div className="mt-32 mb-16 animate-float font-pretendard">
@@ -269,7 +267,6 @@ function App() {
           <div className="mt-12">
             {/* Block 1: YOLO 기반 객체 인식 */}
             <FadeInSection className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              {/* 텍스트 */}
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                   YOLO-based Object Perception
@@ -300,7 +297,6 @@ function App() {
 
             {/* Block 2: Vision-Language Reasoning */}
             <FadeInSection className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              {/* 텍스트 */}
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                   Vision-Language Scene Understanding
@@ -333,7 +329,6 @@ function App() {
 
             {/* Block 3: Object-Aware Fine-Tuning */}
             <FadeInSection className="grid md:grid-cols-2 gap-12 items-center">
-              {/* 텍스트 */}
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                   Road Scene Pipeline
@@ -353,7 +348,6 @@ function App() {
                   </span>
                 </Link>
               </div>
-              {/* 이미지 */}
               <div className="flex justify-center">
                 <img
                   src="images/3.png"
@@ -380,7 +374,6 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <div className="flex items-center space-x-4 mb-4">
-                {/* logo2.png 사용 */}
                 <img
                   src="images/logo2.png"
                   alt="SceneDrive logo"
