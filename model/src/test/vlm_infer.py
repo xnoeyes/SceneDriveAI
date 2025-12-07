@@ -13,7 +13,7 @@ YOLO_JSON = "/home/sen/sen2025/pbl2/datasets/captions/test_yolo.json"
 
 QUESTION = "What is the current road situation?"
 
-SAVE_JSON = "/home/sen/sen2025/pbl2/outputs/infer_results.json"   # 저장 경로
+SAVE_JSON = "/home/sen/sen2025/pbl2/outputs/infer_results.json"  
 
 print("[INFO] Loading processor...")
 processor = AutoProcessor.from_pretrained(OUT_DIR)
