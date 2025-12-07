@@ -43,7 +43,6 @@ const PRESET_QUESTIONS = [
   },
 ];
 
-// ---- 새 HEX 팔레트 ----
 const COLOR_PALETTE = [
   "#3b82f6", // Blue
   "#10b981", // Green
@@ -69,13 +68,11 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// border: 진하게, fill: 아주 연하게 채우기
 const BOX_COLOR_PALETTE = COLOR_PALETTE.map((hex) => ({
   border: hex,
   fill: hexToRgba(hex, 0.12),
 }));
 
-// 클래스 이름 기준으로 항상 같은 색이 나오도록
 function getBoxColors(label) {
   if (!label) return BOX_COLOR_PALETTE[0];
   const sum = Array.from(label).reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
@@ -86,7 +83,6 @@ function AnalysisPage2() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 이전 페이지에서 받아온 건 "이미지"만 사용
   const initialImageSrc = location.state?.imageSrc || null;
 
   const [imageSrc, setImageSrc] = useState(initialImageSrc);
@@ -168,12 +164,10 @@ function AnalysisPage2() {
     }
   };
 
-  // 새로운 이미지 업로드 → 미리보기 + YOLO 재검출
   const handleImageUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // 미리보기용 dataURL 생성
     const reader = new FileReader();
     reader.onloadend = () => {
       setImageSrc(reader.result);
@@ -246,8 +240,6 @@ function AnalysisPage2() {
             도로 상황을 설명하고, 질의응답을 수행합니다.
           </p>
         </section>
-
-        {/* 1. 위: 큰 네비게이션 + 이미지 영역 */}
         <section className="mb-10">
           <div className="bg-white rounded-3xl shadow-md p-6 md:p-8">
             <div className="flex items-center justify-between mb-2">
@@ -258,8 +250,6 @@ function AnalysisPage2() {
                 {isDetecting ? "Running detection..." : `Detections: ${boxes.length}`}
               </span>
             </div>
-
-            {/* 업로드 영역 */}
             <div className="mb-4 flex items-center justify-between gap-4">
               <div className="text-xs text-gray-600">
                 초기 이미지는 Detection 페이지에서 가져오며,
@@ -292,8 +282,7 @@ function AnalysisPage2() {
 
                   {/* Screen area */}
                   <div className="relative bg-black rounded-2xl overflow-hidden">
-                    <div className="relative w-full h-full">
-                      {/* 이미지 */}
+                    <div className="relative w-full h-full">                     
                       <img
                         src={imageSrc}
                         alt="Input"
@@ -330,7 +319,7 @@ function AnalysisPage2() {
                     </div>
                   </div>
 
-                  {/* VLM Answer - 이미지 밑쪽에 표시 */}
+                  {/* VLM Answer */}
                   {answer && (
                     <div className="mt-4 mx-2 px-4 py-3 bg-gray-800/90 rounded-2xl text-gray-100 text-lg">
                       <p className="whitespace-pre-wrap">{answer}</p>
@@ -362,7 +351,7 @@ function AnalysisPage2() {
           </div>
         </section>
 
-        {/* 2. 아래: Ask the VLM 카드 */}
+        {/* Ask the VLM */}
         <section>
           <div className="bg-white rounded-3xl shadow-md p-6 md:p-8 flex flex-col">
             <h3 className="text-xl font-bold text-gray-800 mb-4">
