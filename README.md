@@ -11,7 +11,6 @@ The datasets used or referred to in this project are listed below
 | Name | Link |
 |------|------|
 | 생활도로 객체인식 자율주행 데이터 | [AI Hub](https://www.aihub.or.kr/aihubdata/data/view.do?srchOptnCnd=OPTNCND001&currMenu=115&topMenu=100&searchKeyword=%EC%A3%BC%ED%96%89&aihubDataSe=data&dataSetSn=71784) |
-| 승용 자율주행차 악천후 데이터 | [AI Hub](https://www.aihub.or.kr/aihubdata/data/view.do?srchOptnCnd=OPTNCND001&currMenu=115&topMenu=100&searchKeyword=%EC%A3%BC%ED%96%89&aihubDataSe=data&dataSetSn=71626) |
 
 ## Main Datasets Structure
 
@@ -131,3 +130,9 @@ datasets/
   <img src="images/005.png" width="32%" />
   <img src="images/006.png" width="32%" />
 </p>
+
+## Demo Video
+
+<video width="750" autoplay muted loop controls>
+  <source src="https://github.com/xnoeyes/2025_PBL_SceneDrive/releases/download/v1.0.0/demo.mp4" type="video/mp4">
+</video>
