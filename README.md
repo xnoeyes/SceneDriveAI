@@ -43,7 +43,7 @@ datasets/
 ### Model 
 - Object Detection: **YOLOv11s** (`ultralytics`)
 - Vision-Language: **Qwen2-VL-7B-Instruct** (4-bit quantization)
-- 
+  
 ---
 
 ## Key Features
@@ -62,14 +62,14 @@ datasets/
 #### 웹 기반 데모 인터페이스
    - 이미지 업로드 후 도로 위 객체 탐지와 도로 장면 설명 결과 확인
 
-## Architecture
+---
+
+## Model Experiments & Results
+
 <p align="center">
   <img src="images/pipeline_overview.png" width="650">
 </p>
 
----
-
-## Model Experiments & Results
 ### 1. Object Detection
 
 #### 1-1. Loss Trends
@@ -145,4 +145,27 @@ datasets/
 
 [▶ Watch the demo video](https://github.com/xnoeyes/2025_PBL_SceneDrive/releases/download/v1.0.0/demo.mp4)
 
+---
+
+## My Contributions
+
+- **System Design**
+  - 전체 파이프라인 설계
+
+- **Object Detection Training**
+  - 생활도로 객체인식 데이터셋 기반 YOLOv11s 학습 진행
+
+- **VLM Fine-tuning & Evaluation**
+  - Qwen2-VL-7B-Instruct 4bit 기반 VLM 학습 진행
+
+- **Web Demo Implementation**
+  - 데모 UI 구현 및 Backend 구축
+    
+---
+
+## Limitations & Future Work
+
+- 실제 자율주행 로그 시나리오(연속 프레임, 비/야간 환경)에 대한 추가 평가 필요
+- 영상 단위 입력 및 temporal reasoning 확장
+- LiDAR, HD Map 등 멀티모달 센서 정보와의 통합
 
