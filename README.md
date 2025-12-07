@@ -67,10 +67,8 @@ datasets/
   <img src="images/pipeline_overview.png" width="750">
 </p>
 
-## Model Experiments & Results
-
 ---
-
+## Model Experiments & Results
 ### 1. Object Detection
 
 #### 1-1. Loss Trends
