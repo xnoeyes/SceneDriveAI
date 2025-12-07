@@ -1,4 +1,4 @@
-# 2025 SceneDrive AI 
+# SceneDrive AI 
 > 2025학년도 3학년 2학기 PBL 프로젝트로 수행한 작업물입니다.
 
 ```
