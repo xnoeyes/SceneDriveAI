@@ -13,7 +13,7 @@ The datasets used or referred to in this project are listed below
 |------|------|
 | 생활도로 객체인식 자율주행 데이터 | [AI Hub](https://www.aihub.or.kr/aihubdata/data/view.do?srchOptnCnd=OPTNCND001&currMenu=115&topMenu=100&searchKeyword=%EC%A3%BC%ED%96%89&aihubDataSe=data&dataSetSn=71784) |
 
-## Main Datasets Structure
+## Datasets Structure
 
 ```
 datasets/
@@ -43,7 +43,15 @@ datasets/
 
 ### Model 
 - Object Detection: **YOLOv11s** 
-- Vision-Language: **Qwen2-VL-7B-Instruct** 
+- Vision-Language: **Qwen2-VL-7B-Instruct**
+
+### Hardware
+
+| Component | Spec            |
+|----------|-----------------|
+| CPU      | Intel Core i9-10900X |
+| GPU      | NVIDIA GeForce RTX 3090 |
+| OS       | Ubuntu 22.04    |
   
 ---
 
