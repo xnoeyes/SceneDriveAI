@@ -82,7 +82,7 @@ function AnalysisPage1() {
 
     try {
       const formData = new FormData();
-      formData.append("file", imageFile); // 🔹 백엔드에서 file로 받도록
+      formData.append("file", imageFile); 
 
       const res = await fetch(BACKEND_URL, {
         method: "POST",
