@@ -87,6 +87,11 @@ datasets/
 | Precision    | 0.707   | 0.768 | +6%        |
 | Recall       | 0.496   | 0.694 | +20%       |
 
+<p align="center">
+  <img src="images/precision_recall.png" width="32%" />
+  <img src="images/002.train_val_loss_combined.png" width="32%" />
+</p>
+
 ---
 
 ### 2. Vision-Language Model
@@ -99,10 +104,6 @@ datasets/
 | Total steps             | 519 steps                     |
 | Avg. time per step      | **≈ 20.4s/step**              |
 
-<p align="center">
-  <img src="images/precision_recall.png" width="32%" />
-  <img src="images/002.train_val_loss_combined.png" width="32%" />
-</p>
 
 #### 2-2. VLM Performance
 
