@@ -44,7 +44,6 @@ datasets/
 - Object Detection: **YOLOv11s** (`ultralytics`)
 - Vision-Language: **Qwen2-VL-7B-Instruct** (4-bit quantization)
 
----
 ## Key Features
 1. Object Detection
    - YOLO 기반으로 차량, 보행자, 표지판 등 도로 위 주요 객체 탐지
