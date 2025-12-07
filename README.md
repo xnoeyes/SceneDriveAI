@@ -41,8 +41,8 @@ datasets/
 - Styling: **Tailwind CSS**
 
 ### Model 
-- Object Detection: **YOLOv11s** (`ultralytics`)
-- Vision-Language: **Qwen2-VL-7B-Instruct** (4-bit quantization)
+- Object Detection: **YOLOv11s** 
+- Vision-Language: **Qwen2-VL-7B-Instruct** 
   
 ---
 
