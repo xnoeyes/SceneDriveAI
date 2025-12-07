@@ -1,4 +1,5 @@
-# 2025 SceneDrive AI (3-2 PBL) 
+# 2025 SceneDrive AI 
+> 2025학년도 3학년 2학기 PBL(3-2 PBL) 프로젝트로 수행한 작업물입니다.
 
 ```
 이 리포지토리는 Object-aware Road Scene Understanding를 목표로 하는 도로 상황 인지 시스템 구축 workspace 입니다. 
