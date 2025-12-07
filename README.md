@@ -93,9 +93,9 @@ datasets/
 | Recall       | 0.496   | 0.694 | +20%       |
 
 <p align="center">
-  <img src="images/precision_recall.png" width="33%" />
-  <img src="images/train_val_loss_combined.png" width="33%" />
-  <img src="images/map.png" width="33%" />
+  <img src="images/precision_recall.png" width="32%" />
+  <img src="images/train_val_loss_combined.png" width="32%" />
+  <img src="images/map.png" width="32%" />
 </p>
 
 ---
