@@ -12,7 +12,6 @@ import {
 } from "recharts";
 import FadeInSection from "./FadeInSection";
 
-// ====== 1. 메트릭 비교 데이터 ======
 const METRIC_BAR_DATA = [
   { metric: "BLEU", exp1: 0.0832, exp2: 0.1748 },
   { metric: "ROUGE-L", exp1: 0.3969, exp2: 0.4036 },
@@ -20,7 +19,6 @@ const METRIC_BAR_DATA = [
   { metric: "BERTScore-F1", exp1: 0.9116, exp2: 0.9179 },
 ];
 
-// 슬라이드 1, 2용 단일 시리즈 데이터
 const EXP1_BAR_DATA = METRIC_BAR_DATA.map((d) => ({
   metric: d.metric,
   value: d.exp1,
@@ -100,7 +98,6 @@ function VLDetails() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 text-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-10 md:py-12">
-        {/* 상단 NAV */}
         <nav className="mb-10 flex items-center justify-between">
           <h1 className="text-2xl font-extrabold text-gray-900">
             SceneDrive <span className="text-primary">AI</span>
@@ -118,7 +115,6 @@ function VLDetails() {
         <section className="mb-12">
           <FadeInSection>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6">
-              {/* 왼쪽: VLM 설명 */}
               <div className="flex-1">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                   Vision-Language Scene Understanding
@@ -133,8 +129,6 @@ function VLDetails() {
                   설명합니다.
                 </p>
               </div>
-
-              {/* 오른쪽: VLM 파이프라인 그림 */}
               <div className="flex-1">
                 <div className="flex-1 flex items-center justify-center">
                   <img
@@ -151,15 +145,12 @@ function VLDetails() {
         {/* 1. Experiment Setup */}
         <section className="mb-14">
           <FadeInSection>
-            {/* 섹션 타이틀 + 화살표 네비 */}
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <h2 className="text-lg md:text-2xl font-semibold text-gray-900">
                   Experiment Setup
                 </h2>
               </div>
-
-              {/* 화살표 + 인덱스 표시 */}
               <div className="flex items-center gap-2 text-[11px] md:text-xs text-gray-500">
                 <button
                   type="button"
@@ -178,12 +169,10 @@ function VLDetails() {
                 </button>
               </div>
             </div>
-
-            {/* 가운데 큰 카드: 내용만 슬라이드처럼 바뀜 */}
             <div className="mb-6">
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-md p-6 md:p-7 text-sm leading-relaxed">
                 {infoIndex === 0 && (
-                  // --- 슬라이드 1 : Training & Runtime 표 ---
+                  // 슬라이드 1 : Training & Runtime 표 
                   <div>
                     <h3 className="text-sm font-bold text-gray-900 mb-3 text-xl">
                       Training &amp; Runtime
@@ -216,7 +205,7 @@ function VLDetails() {
                 )}
 
                 {infoIndex === 1 && (
-                  // --- 슬라이드 2 : Model Setup ---
+                  // 슬라이드 2 : Model Setup 
                   <div>
                     <h3 className="text-sm font-bold text-gray-900 mb-3 text-xl">
                       Model Setup
@@ -249,8 +238,6 @@ function VLDetails() {
                 )}
               </div>
             </div>
-
-            {/* 아래: 하이라이트 카드 3개 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white/80 rounded-2xl shadow-md p-4 text-sm">
                 <p className="font-bold text-gray-900 mb-1 text-lg">
@@ -285,11 +272,8 @@ function VLDetails() {
             </div>
           </FadeInSection>
         </section>
-
-        {/* ====== 2. Object Text Formatting 슬라이드 ====== */}
         <section className="mb-14">
           <FadeInSection>
-            {/* 타이틀 + 화살표 네비 */}
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg md:text-2xl font-semibold text-gray-900">
                 Object Text Formatting
@@ -315,7 +299,6 @@ function VLDetails() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* 왼쪽: 설명 카드들 */}
               <div className="flex flex-col justify-center h-full space-y-4 text-sm leading-relaxed">
                 {fmtIndex === 0 && (
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-6">
@@ -358,8 +341,6 @@ function VLDetails() {
                     </ul>
                   </div>
                 )}
-
-                {/* 슬라이드 3: 종합 결론 카드 */}
                 {fmtIndex === 2 && (
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-6">
                     <h3 className="text-base font-semibold text-gray-900 mb-2 text-lg">
@@ -386,14 +367,10 @@ function VLDetails() {
                   </div>
                 )}
               </div>
-
-              {/* 오른쪽: 슬라이드별 Quantitative Results */}
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-6">
                 <h3 className="text-base font-semibold text-gray-900 mb-3">
                   Quantitative Results
                 </h3>
-
-                {/* --- 슬라이드 1: Exp 1만 --- */}
                 {fmtIndex === 0 && (
                   <>
                     <div className="overflow-x-auto mb-4">
@@ -437,8 +414,6 @@ function VLDetails() {
                     </div>
                   </>
                 )}
-
-                {/* --- 슬라이드 2: Exp 2만 --- */}
                 {fmtIndex === 1 && (
                   <>
                     <div className="overflow-x-auto mb-4">
@@ -482,8 +457,6 @@ function VLDetails() {
                     </div>
                   </>
                 )}
-
-                {/* --- 슬라이드 3: Exp 1 vs Exp 2 비교 --- */}
                 {fmtIndex === 2 && (
                   <>
                     <div className="overflow-x-auto mb-4">
@@ -538,19 +511,14 @@ function VLDetails() {
             </div>
           </FadeInSection>
         </section>
-
-        {/* ====== 3. 정성적 결과 샘플 ====== */}
         <section className="mb-10">
           <FadeInSection>
-          {/* 제목 + 설명 + 화살표 */}
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-lg md:text-2xl font-semibold text-gray-900">
                 Qualitative Examples
               </h2>
             </div>
-
-            {/* 왼/오 화살표 + 현재 슬라이드 번호 */}
             <div className="flex items-center gap-2">
               <button
                 onClick={() =>
@@ -577,13 +545,10 @@ function VLDetails() {
               </button>
             </div>
           </div>
-
-          {/* 한 장만 보여줌 */}
           {(() => {
             const s = QUALITATIVE_SAMPLES[qualSlide];
             return (
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-5 flex flex-col">
-                {/* 파일 이름 + 이미지 */}
                 <div className="mb-3">
                   <div className="text-xs text-gray-500 mb-1">
                     {s.filename}
@@ -596,8 +561,6 @@ function VLDetails() {
                     />
                   </div>
                 </div>
-
-                {/* Q / GT / Exp1 / Exp2 텍스트 */}
                 <div className="text-xs md:text-sm space-y-2 flex-1">
                   <div>
                     <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-700 mr-1">
@@ -631,8 +594,6 @@ function VLDetails() {
           })()}
           </FadeInSection>
         </section>
-
-        {/* ====== 4. Future Research ====== */}
         <section className="mb-10 md:mb-12">
           <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-4">
             Future Research
