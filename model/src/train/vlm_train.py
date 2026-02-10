@@ -20,8 +20,8 @@ def main():
     os.makedirs(cfg.output_dir, exist_ok=True)
 
     args = TrainingArguments(
-        remove_unused_columns=False,  # ✅ 반드시 유지
-        dataloader_num_workers=0,     # ✅ 추가
+        remove_unused_columns=False, 
+        dataloader_num_workers=0,    
         output_dir=cfg.output_dir,
         num_train_epochs=3,
         per_device_train_batch_size=2,
